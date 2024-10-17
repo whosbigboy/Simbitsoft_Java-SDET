@@ -12,56 +12,56 @@ public class Powerlifter extends GymBro implements IGetMoreAthletic, IGetSportTi
     void Train(int time) {
 
         timeOfTrains+=time;
-        weight+=time/20d;
-        InfoMessageRun(time);
+        weight+=time/10d;
+        InfoMessagePW(time);
         GetMoreAthletic();
 
     }
 
     @Override
     public void GetMoreAthletic() {
-        if (timeOfTrains>=5 && skill_of_run == "freshman") {
-            skill_of_run = "amateur";
-            InfoMessageRun();
+        if (timeOfTrains>=5 && skill_of_powerlifting == "freshman") {
+            skill_of_powerlifting = "amateur";
+            InfoMessagePW();
             if (timeOfTrains>=20){
-                skill_of_run = "advanced";
-                InfoMessageRun();
+                skill_of_powerlifting = "advanced";
+                InfoMessagePW();
                 if (timeOfTrains>=50){
-                    skill_of_run = "pro";
-                    InfoMessageRun();
+                    skill_of_powerlifting = "pro";
+                    InfoMessagePW();
                     if (timeOfTrains>=100){
-                        skill_of_run = "king of gym";
-                        InfoMessageRun();
+                        skill_of_powerlifting = "king of gym";
+                        InfoMessagePW();
                     }
                 }
             }
         }
 
-        if (timeOfTrains>=20 && skill_of_run == "amateur"){
-            skill_of_run = "advanced";
-            InfoMessageRun();
+        if (timeOfTrains>=20 && skill_of_powerlifting == "amateur"){
+            skill_of_powerlifting = "advanced";
+            InfoMessagePW();
             if (timeOfTrains>=50){
-                skill_of_run = "pro";
-                InfoMessageRun();
+                skill_of_powerlifting = "pro";
+                InfoMessagePW();
                 if (timeOfTrains>=100){
-                    skill_of_run = "legend";
-                    InfoMessageRun();
+                    skill_of_powerlifting = "legend";
+                    InfoMessagePW();
                 }
             }
         }
 
-        if (timeOfTrains>=50 && skill_of_run == "advanced"){
-            skill_of_run = "pro";
-            InfoMessageRun();
+        if (timeOfTrains>=50 && skill_of_powerlifting == "advanced"){
+            skill_of_powerlifting = "pro";
+            InfoMessagePW();
             if (timeOfTrains>=100){
-                skill_of_run = "king of gym";
-                InfoMessageRun();
+                skill_of_powerlifting = "king of gym";
+                InfoMessagePW();
             }
         }
 
-        if (timeOfTrains>=100 && skill_of_run == "pro"){
-            skill_of_run = "king of gym";
-            InfoMessageRun();
+        if (timeOfTrains>=100 && skill_of_powerlifting == "pro"){
+            skill_of_powerlifting = "king of gym";
+            InfoMessagePW();
         }
     }
 
@@ -69,7 +69,7 @@ public class Powerlifter extends GymBro implements IGetMoreAthletic, IGetSportTi
     public void GetSportTitle() {
         Scanner sc = new Scanner(System.in);
         System.out.printf("****** COMPETION ******\n%s решается участвовать в соревнованиях.\nЕго текущий уровень мастерства: %s\n" +
-                "В какой группе будете принимать участие:Easy или Hard?\n ",name,skill_of_run);
+                "В какой группе будете принимать участие:Easy или Hard?\n ",name,skill_of_powerlifting);
         String group = sc.next();
         int win = random.nextInt(1,11);
 
@@ -199,12 +199,12 @@ public class Powerlifter extends GymBro implements IGetMoreAthletic, IGetSportTi
                 "\n Кол-во тренировок: %d\n\n",name,(age+timeOfTrains/100),weight,skill_of_run,numOfTrophies,timeOfTrains);
     }
 
-    private void InfoMessageRun(int time){
+    private void InfoMessagePW(int time){
         System.out.printf("------ TRAIN ------\n%s занимался качем %d занятий за последнее время.\n" +
                 "Его уровень силы: %s\nВес на данный момент: %f\nВсего занятий: %d\n\n", name, time, skill_of_powerlifting,weight,timeOfTrains );
     }
 
-    private void InfoMessageRun(){
+    private void InfoMessagePW(){
         System.out.printf("!!!!!! UPDATE !!!!!!\n%s отзанимался достаточно, чтобы повысить уровень мастерства." +
                 "\nТеперь его уровень силы: %s\n\n",name,skill_of_powerlifting);
     }
